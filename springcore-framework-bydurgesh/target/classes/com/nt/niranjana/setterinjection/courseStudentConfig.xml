@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  https://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+  <!-- insert student class object values into course using setter injection concept where i am using ref as tag -->
+  <bean class="com.nt.niranjana.setterinjection.Student" id="studentref">
+  	<property name="sNo" value="102"/>
+  	<property name="sName" value="Susanta"/>
+  	<property name="sAddrs" value="Karapada"/>
+  	<property name="sSal" value="40000"/>
+  </bean>
+  <bean class="com.nt.niranjana.setterinjection.Course" id="coursestudentref">
+  	<property name="java" value="1-Year"/>
+  	<property name="python" value="2-Year"/>
+  	<property name="student">
+  		<ref bean="studentref"/>
+  	</property>
+  </bean>
+  
+  <!-- insert student class object values into course using setter injection concept where i am using ref as attribute -->
+  <bean class="com.nt.niranjana.setterinjection.Student" id="studentref2">
+  	<property name="sNo" value="123"/>
+  	<property name="sName" value="Mahesh"/>
+  	<property name="sAddrs" value="Chatrapur"/>
+  	<property name="sSal" value="30000"/>
+  </bean>
+  <bean class="com.nt.niranjana.setterinjection.Course" id="coursestudentref2">
+  	<property name="java" value="5-Year"/>
+  	<property name="python" value="2-Year"/>
+  	<property name="student" ref="studentref2"/>	
+  </bean>
+  
+  <!-- insert student class object values into course using setter injection concept where i am using p schema -->
+  <bean class="com.nt.niranjana.setterinjection.Student" id="studentref3">
+  	<property name="sNo" value="345"/>
+  	<property name="sName" value="Raju"/>
+  	<property name="sAddrs" value="Kolkata"/>
+  	<property name="sSal" value="10000"/>
+  </bean>
+  <bean class="com.nt.niranjana.setterinjection.Course" id="coursestudentref3"  p:java="3-Year" p:python="1-Year" p:student-ref="studentref3"/>
+  
+ 
+ </beans>

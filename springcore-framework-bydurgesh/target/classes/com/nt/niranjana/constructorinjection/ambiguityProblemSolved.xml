@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  https://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+ <!-- solve AmbiguityProblemCI sing constructor injection concept where value as attribute not tag and also use of index -->
+  <bean class="com.nt.niranjana.constructorinjection.AmbiguityProblemCI" id="amb">
+  <!-- 	<constructor-arg name="idNo" value="102"/>
+  	<constructor-arg name="sal" value="12000"/> -->
+  	
+  	<!-- <constructor-arg value="101" type="int"/>
+  	<constructor-arg  value="11000" type="int"/> -->
+  	
+  	<constructor-arg  value="103" type="int" index="1"/>
+  	<constructor-arg value="13000" type="int" index="0"/>
+  </bean>
+   
+ </beans>

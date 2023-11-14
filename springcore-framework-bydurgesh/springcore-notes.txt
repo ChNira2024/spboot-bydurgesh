@@ -1,0 +1,126 @@
+Maven Project->maven-archetype-quickstart 1.1
+spring-framework version:6.0.11
+*****Dependency*******
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-core</artifactId>
+    <version>6.0.11</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>6.0.11</version>
+</dependency>
+ 
+Note: spring core and context version should be same.
+
+-::Setter Injection(using setter method)::-
+=>We are inserting single value into "Student" POJO class property value in 3 ways...
+i)insert student class values using setter injection concept where value as tag
+ii)insert student class values using setter injection concept where value as attribute
+iii)insert student class values using setter injection concept where i am using p schema
+Ex: see the code (StudentMain.java)
+=>we are also inserting multiple value i.e collection types using List , Set , Map and Properties into "StudentList" POJO class property value..
+Ex:See the Code(See the code StudentListMain.java)
+=>we are also` inserting Injecting Reference Type into "Student" into "Course" POJO class property value in 3 way..
+i)insert student class object values into course using using setter injection concept where ref as tag
+ii)insert student class object values into course using using setter injection concept where ref as attribute
+iii)insert student class object values into course using using setter injection concept where i am using p schema
+Ex:See the Code(See the code CourseStudentRefMain.java)
+
+-::Constructor Injection(using constructor method)::-
+=>We are inserting single value into "Person" POJO class property value in 3 ways...
+i)insert person class values using constructor injection concept where value as tag
+ii)insert person class values using constructor injection concept where value as attribute not tag
+iii)insert person class values using constructor injection concept where i am using c schema
+Ex: see the code (PersonMain.java)
+=>we are also inserting Injecting Reference Type into "Person" into "Course" POJO class property value in 3 way..
+i)insert person class object values into course using constructorinjection injection concept where i am using ref as tag
+ii)insert person class object values into course using constructorinjection concept where i am using ref as attribute
+iii)insert person class object values into course using constructor injection concept where i am using c schema
+Ex:See the Code(See the code CoursePersonRefMain.java)
+iv)Constructor-arg always takes bydefault i.e String type argument.Assume i have taken two constructor of one class one is int-arg another is String-arg,
+in this case always String-arg constructor will call becoz of bydefault.
+->if we want our own choice constructor then we need use 'type' as attribute and mention the datatype.
+->If we use both default and our choice constructor then always our-choice constructor will execute.
+->using 'index' as attribute we can display the value in order wise i.e which one is first and second like that..
+Ex: See the Code(AmbiguityMain.java)
+NOTE: taking name property in xml file is optional for constructor injection..
+
+***Implementing Spring bean life cycle method using setter injection with XML file Configuration***
+->Bydefault method like init() and destroy() call automatically at the time of class loading..
+->if we want to configure manually then we can cofg it in xml file..
+->we can take any method which return type is void and confg in xml file but cfg that method having type 'init-method and destroy-method' in xml file..
+->See the Code(SamosaMain.java,samosaConfig.xml)
+
+***Implementing Spring bean life cycle method using setter injection with Pre-defined interface for Configuration***
+->'InitializingBean' is a pre-defined interface . it gives afterPropertiesSetmethod for initialization, work like init() method.
+->'DisposableBean' is a pre-defined interface.it gives destroy() method for destroy() the object.
+Ex:-See the Code(PespsiMain.java)
+
+***Implementing Spring Bean LifeCyle using Annotations(@PostConstruct and @PreDestroy)***
+->both the @PostConstruct and @PreDestroy annotations are part of Java EE. 
+->Since Java EE was deprecated in Java 9, and removed in Java 11, we have to add an additional dependency to use these annotations:
+<dependency>
+    <groupId>javax.annotation</groupId>
+    <artifactId>javax.annotation-api</artifactId>
+    <version>1.3.2</version>
+</dependency>
+Note:<context:annotation-config/> is most require while work with annotation based configuration, else not work..
+
+***Autowiring in spring***
+->It is the Concept of Spring framework which is helps to inject automatically..
+->But it can't used for inject String and Primitive value.It only used for inject reference type only.
+->Autowiring happens 2 ways we can inject i.e using XML and Annotation.
+->Through XML we can cfg by using(no,byName,byType,constructor,autodetect)
+->Through Annotation we can cfg by using @Autowired
+->"byName" used for it will check any class refrence is matching or not in XML file , if matching then it automatically re-direct to that class and create object.
+->In XML, helper class ID and target class used helper class reference should be same in XML file then only byName will work..
+Ex:See the Code(EmployeeSalaryMain.java)
+->"byType" used for it will check any refrence type(means pojo) is matching or not in XML file , if matching then it automatically re-direct to that class and create object.
+->In XML, helper class type and target class used helper class reference type should be same in XML file then only byName will work..
+Ex:See the Code(EmployeeSalaryMain.java)
+->using @Autowired annotation we can cfg also.
+Ex:See the Code(EmployeeSalaryAnnoMain.java)
+
+***@Qualifier Annotation***
+->If we have multiple bean id with same bean class then spring container difficult to inject..
+->so that this annotation used for avoid conflit of bean id of same/one bean, when we are using same bean multiple time with diff id.
+->In Xml cfg,If we create two object of one bean class having two different class id then also we are getting error like "expected single matching bean but found 2" while using Autowire address in target class.
+->So solving this issue,we @Autowire Annotation along with @Qualifier Annotation..So that we can mention perticular bean class id in @Qualifier as argument.
+->So that mentioned id bean class object will create. This way we can solving above problem.
+Ex: See the Code(EmployeeSalaryQualifierMain.java
+
+***Standalone Collection using util class****
+->See the COde(StudentListsMain.java)
+
+***Stereotype Annotation***
+@Component with @Value:-
+->It work like <bean> tag .Becoz of this tag spring-container create the bean class object at run-time.
+->Like that if we use @Component then we are telling to spring-container create the bean class object at run-time.
+->@Component always used at top of the class.and pass the value using @Value annotaion..
+Ex:See the Code(StudentMain.java)
+->we can pass list of data using @Component with @Value Annotation.. 
+
+@Scope::-
+->Spring-container bydefault contain Singleton concept. it create only one Object in whole application.
+->if we want to create more object then we need to define "prototype" in @Scope tag as argument..
+->In another way we can mention/define "prototype' in xml file as scope attribute..
+Ex:See the Code(StudentScopeMain.java)
+->invoke static method,variable,new object and passing value automatically..
+Ex:See the Code(PredefinedMethodVariable.java,StudentScopeMain.java)
+
+***Removing Complete XML for Spring Configuration | @Configuration | @ComponentScan | @Bean Annotation***
+->@Configuration:-Indicates that a class declares one or more @Bean methods andmay be processed by the Spring container 
+to generate bean definitions and service requests for those beans at runtime.
+->@Bean:Indicates that a method return a bean class to be managed by the Spring container.
+ Ex:See the Code(ConfigCompScanBeanMain.java)
+ 
+
+  
+
+
+ 

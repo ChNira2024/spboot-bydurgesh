@@ -1,0 +1,45 @@
+*****Hibernate Dependency*****
+<!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.1.4.Final</version>
+		</dependency>
+		
+1.InsertStudentsAndAddressDetails 2.FetchStudentsAndAddressDetails 3.InsertStudentCertificateUsingEmbeddableConcept 4.InsertFetchPersonalInfoFromEmployeeEntity_OneToOne
+5.InsertProductDetailsFromCustomerEntity_OneToMany 6.fetchProductDetailsFromCustomerEntity_OneToMany 7.InsertFetchProjectFromEmployee2Entity_ManyTomany
+
+		
+*****Hibernate Annotation*****
+@Entity
+@Table
+@Id
+@GeneratedValue
+@Column
+@Transient: this annotation is used in top of the field/property and says that no need to create as column in db.
+                 (to avoid perticular field we use this annotation)
+@Temporal:this annotation is used over a date field and tells the  format of date
+@Lob: large object(image,file)
+@OneToOne
+@OneToMany
+@ManyToOne
+@ManyToMany
+@JoinColumn
+@Embedded : this annotation used for joins/embedd all the fields of one class into an another class as field and create columns in DB.
+  =>it work like joinColumn() functionality;
+ **********Hibernate theory************************
+ i)In Hibernate 2 type of Fetch is present: a)LAZY b)EAGER
+ a)LAZY: IN Lazy loading, data load only when we explicitly call getter or setter method.
+ b)EAGER: IN Eager loading, data loading occurs on the spot.
+ 
+ ******Hibernate/Persistence lifecycle states***************
+ a)Transient State b)Persistent State c)Detached State d)Removed State
+ Transient State:
+ =>Until a class is not associated with DB or Session that class is in TRansient State.
+ =>when the class is associate with DB and session(using session save() method and class data stored in DB) that is in Persistent state
+ 
+ 
+ =>session.save() is deprecated from hibernate 6.0, instead of it we can use session.persist() method. To save data in DB
+ =>session.delete() is deprecated from hibernate 6.0, instead of it we can use session.remove() method. Delete data from DB
+ =>session.createQuery() is deprecated from hibernate 5.0, instead of it we can use session.getEntityManagerFactory().createEntityManager().createQuery()
+ Note:session.beginTransaction() is requied for insert,update,delete operation not for select operation.

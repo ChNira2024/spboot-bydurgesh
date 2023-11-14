@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="row mt-5">
+			<div class="col-md-6 offset-md-3">
+				<form th:action="@{/process}" method="post" th:object="${formdata}">
+					<h2 class="text-center">Login Here</h2>
+					
+					<div class="form-group">
+						<label for="userName">User Name</label>
+						<input type="text" class="form-control" name="userNameData" aria-describedby="emailHelp" th:value="${formdata.userNameData}"
+							th:classappend="${#fields.hasErrors('userNameData')?'is-invalid':''}" placeholder="Please Enter User name">
+							<div th:each="error : ${#fields.errors('userNameData')}" th:text="${error}" id="validationServer03" class="invalid-feedback"></div>
+					</div>
+					
+					<div class="form-group">
+						<label for="exampleInputEmail1">Email address</label>
+						<input type="email" class="form-control" name="userEmailData" aria-describedby="emailHelp" th:value="${formdata.userEmailData}"
+							th:classappend="${#fields.hasErrors('userEmailData')?'is-invalid':''}" placeholder="Please Enter email"/>
+						<div th:each="error : ${#fields.errors('userEmailData')}" th:text="${error}" id="validationServer03" class="invalid-feedback"></div>
+					</div>
+					
+					<div class="form-group">
+						<label for="userpassword">User Password</label>
+						<input type="password" class="form-control" name="userPasswordData" aria-describedby="emailHelp" 
+						placeholder="Please Enter User password" th:value="${formdata.userPasswordData}" />
+						
+					</div>
+			<button type="submit" class="btn btn-success">Sign Up</button>
+		</form>
+			</div>
+			
+		</div>
+		
+	</div>
+</body>
+</html>

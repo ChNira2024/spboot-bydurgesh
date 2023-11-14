@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  https://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+  <!-- insert student class values using setter injection concept where value as tag -->
+  <bean class="com.nt.niranjana.setterinjection.Student" id="studentData">
+  	<property name="sNo">
+  		<value>101</value>
+  	</property>
+  	<property name="sName">
+  		<value>Niranjana</value>
+  	</property>	
+  	<property name="sAddrs">
+  		<value>Karapada</value>
+  	</property>
+  	<property name="sSal">
+  		<value>30000</value>
+  	</property> 
+  </bean>
+  
+   <!-- insert student class values using setter injection concept where value as attribute not tag -->
+  <bean class="com.nt.niranjana.setterinjection.Student" id="studentData2">
+  	<property name="sNo" value="102"/>
+  	<property name="sName" value="Susanta"/>
+  	<property name="sAddrs" value="Karapada"/>
+  	<property name="sSal" value="40000"/>
+  </bean>
+  
+  <!-- insert student class values using setter injection concept where i am using p schema -->
+  <bean class="com.nt.niranjana.setterinjection.Student" id="studentData3" p:sNo="103" p:sName="Narayana" p:sAddrs="Hyderabad" p:sSal="25000"/>
+ 
+ </beans>

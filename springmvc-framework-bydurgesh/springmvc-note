@@ -1,0 +1,105 @@
+Maven Project->maven-archetype-webapp-1.0
+spring framework version-
+After create project some error will display in resource/src-webapp-index.jsp file, so we can solve this error 2 ways:
+->1st way we can add servlet-api dependency in pom.xml
+->2nd way we can start/cnfg "Runtime Server" i.e apache-tomcat server
+***************Dependency*****************
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>6.0.11</version>
+</dependency>
+
+
+***Configuration with spring MVC****
+->first configure "DispatcherServlet" in web.xml
+->then create "Spring Configuration" file.(right click on WEB-INF and create xml file with name "spring-servlet.xml"
+->then configure "View Resolver" in spring-servlet.xml
+->then create "Controller" like HomeController
+->then create a View to show the page like index.jsp in WEB-INF/views
+
+
+*******Sending Data From Controller to View(jsp) page Using "Model" **********
+=>if you send data from controller to view using Model then you should use "addAttribute()" method for passing/inserting data.
+->Inside jsp, you should use "getAttribute() method for getting data..
+->getAttribute() is taking two argument i.e String as key and another is Object as value.
+Ex:See the Code(StudentController.java,studentDetails.jsp)
+
+*******Sending Data From Controller to View(jsp) page Using "ModelAndView" **********
+=>if you send data from controller to view using Model then you should use "addObject()" method for passing data.
+->Inside jsp, you should use "getAttribute() method for getting data..
+->getAttribute() is taking two argument i.e String as key and another is Object as value.
+Ex:See the Code(EmployeeController.java,employeeDetails.jsp)
+
+******JSP Expression Language to Print Values in Spring MVC Views*****
+->if we use JSP Expression Language, then no need to use getAttribute(...)method in jsp file to fetch the data from controller using its key" as argument.
+->if we use JSP Expression Language, then only we use "key" in jsp file to fetch the data from controller.
+-> fetch the single object data using Expression language,bydefault EL is "false" so that we need do "true" manually by using syntax:-
+<%@page isELIgnored="false" %>
+Ex:See the COde(EmployeeController2.java,employeeDetails2.jsp)
+->fetch the list of object data then we need use both EL and JSTL in jsp file..
+->JSTL Dependency:-
+<!-- https://mvnrepository.com/artifact/jstl/jstl -->
+<dependency>
+    <groupId>jstl</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+->To use JSTL language in jsp file, we need to  use taglib uri syntax in jsp file..
+->syntax of taglib core uri: <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+->when we run again we got one error i.e java.lang.NoClassDefFoundError: javax/servlet/jsp/tagext/TagLibraryValidator
+->to solve above error we need to add two more dependency i.e....
+<!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api -->
+<dependency>
+    <groupId>jakarta.servlet.jsp.jstl</groupId>
+    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+    <version>2.0.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.glassfish.web/jakarta.servlet.jsp.jstl -->
+<dependency>
+    <groupId>org.glassfish.web</groupId>
+    <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+    <version>2.0.0</version>
+</dependency>
+Ex:See the Code(EmployeeController2.java,employeeDetails2.jsp)
+
+**********Sending data from View(jsp) to Controller*******************
+->we can send data from View to Controller by 3 ways..
+->1st using @RequestParam: it take single single data
+->2nd way: using HttpServletRequest (old practice)
+->3rd way: using @Requestparam with Model(old practice)
+->4rd way: @ModelAttribute: it takes single and list of data also(Best way)
+
+=>First create a registration form using i.e loginform.jsp having Bootstrap 4 Starter Template
+=>Using 'HttpServletRequest' data will send View to Controller..
+Ex:See the Code(UserLoginController.java,success.jsp)
+
+=>Using 'RequestParam' data will send View to Controller..
+Ex:See the Code(UserLoginController.java,success.jsp)
+
+=>Using 'RequestParam with Model' data will send View to Controller..
+Ex:See the Code(UserLoginController.java,success.jsp)
+
+=>Using 'RequestParam with Model wit User' data will send View to Controller..
+Ex:See the Code(UserLoginController.java,success2.jsp)
+ 
+******SpringMVC with Redirect Concept*********
+->Redirect concept used for: redirect the url one page to another page.
+->redirect the url by 3 ways: 1.using redirect prefix(here simple String) and 2.using "RedirectView" as return type.
+Ex:See the code(RedirectStudentController.java)
+
+***********SpringMVC with RedirectView with ExceptionHandler********
+Ex:See the Code(SearchController.java,CustomExceptionHandler.java)
+
+************SpringMVC with Interceptor********************
+=>Interceptor concept used before request hit (means before handler method execute)and after request hit(after handler method execute).
+->before request hit i.e preprocessing and after request hit i.e postprocessing.
+->i am creating my own class i.e MyInterceptor and implements HandlerInterceptor<I>
+->Then over 3 methods: preHandle,postHandle,afterCompletion
+->preHandle run before our control class method run..
+->In Login Authentcation case first it will check our ID and PWD . if ID and PWD correct then only hit the handler method..else interceptor validation msg will shown
+Ex:SEE the code(IDPasswordCheckInterceptorController.java,spring-servlet.xml,idpwdvalivationform.jsp,success.jsp)
+
+
+

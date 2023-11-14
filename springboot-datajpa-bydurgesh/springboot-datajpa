@@ -1,0 +1,58 @@
+**********SpringBoot with Data Jpa**********
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+<dependency>
+	<groupId>com.mysql</groupId>
+	<artifactId>mysql-connector-j</artifactId>
+	<scope>runtime</scope>
+</dependency>
+<dependency>
+	<groupId>org.projectlombok</groupId>
+	<artifactId>lombok</artifactId>
+	<optional>true</optional>
+</dependency>
+
+********DataJpa with Default Method*******
+->StudentControllerWithDefaultFinderMethod.java
+
+******Only Image File Upload into a Static Folder Location********
+->File stored in user choice directory.
+->OnlyImageFileUploadIntoaStaticFolderController.java and OnlyImageFileUploadIntoaStaticFolderController.java
+
+******Only Image File Upload into a Dynamic Folder Location********
+->File stored in dynamically.
+->FileUploadHelperIntoDynamicDirectory.java and OnlyImageFileUploadIntoaDynamicFolderController.java
+
+****Thymeleaf******
+->Add Thymeleaf plugin in your sts/eclipse
+->then add thymeleaf dependencies
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+
+***Server side validation******
+<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+<dependency>
+    <groupId>javax.validation</groupId>
+    <artifactId>validation-api</artifactId>
+    <version>2.0.1.Final</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+<dependency>
+    <groupId>org.hibernate.validator</groupId>
+    <artifactId>hibernate-validator</artifactId>
+    <version>8.0.1.Final</version>
+</dependency>
+->Apply validation on entity class i.e User.java and to trigger validation we must use @Valid annotation before @ModelAttribute in Controller class.
+->After trigger we bind all the result using "BindingResult" variable.
+->BindingResult must use after @ModelAttribute.
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+  
+  <!-- standlone list,here we take LinkedList becoz we can't create object for List<I> so.. -->
+  <util:list list-class="java.util.LinkedList" id="studentsListOfPhone">
+  	<value>9287363563</value>
+	<value>9287315349</value>
+	<value>9287337373</value>
+  </util:list>
+  
+  <!-- standlone Map,here we take HashMap becoz we can't create object for Map<I> so.. -->
+  <util:map map-class="java.util.HashMap" id="studentsListOfCourse">
+  	<entry key="java" value="1 Year" />
+	<entry key="python" value="6 Month" />
+	<entry key="Data Science" value="1 Year" />
+  </util:map>
+  
+  <!-- standlone Set,here we take HashSet becoz we can't create object for Set<I> so.. -->
+  <util:set set-class="java.util.HashSet" id="studentsListOfAddress">
+  	<value>Hyderabad</value>
+	<value>Karapada</value>
+	<value>Bhubaneswar</value>
+  </util:set>
+  
+  <!-- standalone Property,here we take Property class -->
+  <util:properties id="studentsOfProperty">
+  	<prop key="driver">oracle.jdbc.driver.OracleDriver</prop>
+  	<prop key="username">root</prop>
+  	<prop key="password">root</prop>
+  	<prop key="url">jdbc:oracle:thin:@localhost:1521:xe</prop>
+  </util:properties>
+  
+  
+ <!-- inserting multiple value i.e standlone collection types using List,Set,Map,Properties insert into StudentList pojo class -->
+ <bean class="com.nt.niranjana.standalonecollection.StudentsList"   id="studentslist">
+ 	<property name="name" value="Niranjana"/>	
+ 	<property name="phoneno">
+ 		<ref bean="studentsListOfPhone"/>
+ 	</property>
+ 	
+ 	<property name="course">
+ 	<ref bean="studentsListOfCourse"/>
+ 	</property>
+ 	
+ 	<property name="address" ref="studentsListOfAddress"/>
+ 	
+ 	<property name="dbConfiguration" ref="studentsOfProperty"/>
+ 	
+ </bean>
+ 
+ </beans>

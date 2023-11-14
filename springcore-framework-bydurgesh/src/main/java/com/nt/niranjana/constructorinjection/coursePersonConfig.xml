@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  https://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+  <!-- insert person class object values into course using constructorinjection injection concept where i am using ref as tag -->
+  <bean class="com.nt.niranjana.constructorinjection.Person" id="personref">
+  	<constructor-arg value="102"/>
+  	<constructor-arg name="sName" value="Susanta"/>
+  	<constructor-arg name="sAddrs" value="Karapada"/>
+  	<constructor-arg name="sSal" value="40000"/>
+  </bean>
+  <bean class="com.nt.niranjana.constructorinjection.Course" id="coursepersonref">
+  	<constructor-arg  value="1-Year"/>
+  	<constructor-arg value="2-Year"/>
+  	<constructor-arg >
+  		<ref bean="personref" />
+  	</constructor-arg>
+  </bean>
+  
+  <!-- insert person class object values into course using constructorinjection concept where i am using ref as attribute -->
+  <bean class="com.nt.niranjana.constructorinjection.Person" id="personref2">
+  	<constructor-arg  value="103"/>
+  	<constructor-arg  value="Prasanta"/>
+  	<constructor-arg  value="Karapada"/>
+  	<constructor-arg  value="50000"/>
+  </bean>
+  <bean class="com.nt.niranjana.constructorinjection.Course" id="coursepersonref2">
+  	<constructor-arg  value="3-Year"/>
+  	<constructor-arg  value="1-Year"/>
+  	<constructor-arg  ref="personref2" />	
+  </bean>
+  
+  <!-- insert person class object values into course using constructor injection concept where i am using c schema -->
+  <bean class="com.nt.niranjana.constructorinjection.Person" id="personref3">
+  	<constructor-arg  value="104"/>
+  	<constructor-arg value="Rakesh"/>
+  	<constructor-arg  value="Karapada"/>
+  	<constructor-arg  value="20000"/>
+  </bean>
+  <bean class="com.nt.niranjana.constructorinjection.Course" id="coursepersonref3"  c:java="3-Year" c:python="1-Year" c:person-ref="personref3"/>
+  
+ 
+ </beans>

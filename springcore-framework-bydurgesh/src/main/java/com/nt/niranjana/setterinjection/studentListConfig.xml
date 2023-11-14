@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  https://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+ <!-- inserting multiple value i.e collection types using List,Set,Map,Properties insert into StudentList pojo class -->
+ <bean class="com.nt.niranjana.setterinjection.StudentsList"   id="studentslist">
+ 	<property name="name" value="Niranjana"/>	
+ 	<property name="phoneno">
+ 		<list>
+ 			<value>9287363563</value>
+ 			<value>9287315349</value>
+ 			<value>9287337373</value>
+ 			<null/>
+ 		</list>
+ 	</property>
+ 	<property name="address">
+ 		<set>
+ 			<value>Hyderabad</value>
+ 			<value>Karapada</value>
+ 			<value>Bhubaneswar</value>
+ 		</set>
+ 	</property>
+ 	<property name="course">
+ 		<map>
+ 			<entry key="java" value="1 Year"/>
+ 			<entry key="python" value="6 Month"/>
+ 			<entry key="Data Science" value="1 Year"/>
+ 		</map>
+ 	</property>
+ 	<property name="dbConfiguration">
+            <props>
+                <prop key="db_name">MySQLDatabase</prop>
+                <prop key="user_name">root</prop>
+                <prop key="password">root</prop>
+            </props>
+        </property>
+ </bean>
+ 
+ </beans>

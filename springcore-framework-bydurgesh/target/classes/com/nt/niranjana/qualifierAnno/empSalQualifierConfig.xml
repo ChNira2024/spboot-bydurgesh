@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+  
+  
+  <!-- insert Salary class values into Employee class using setter injection concept where value as attribute -->
+  <bean class="com.nt.niranjana.qualifierAnno.Salary" id="salaryObject">
+  	<property name="sal" value="100000"/>
+  	<property name="tranId" value="ASG120467VFGF"/>
+  </bean>
+  
+  <bean class="com.nt.niranjana.qualifierAnno.Salary" id="salaryObject2">
+  	<property name="sal" value="200000"/>
+  	<property name="tranId" value="ASG202827VFGF"/>
+  </bean>
+  
+   <bean class="com.nt.niranjana.qualifierAnno.Employee" id="empId4" >
+  	<property name="id" value="102"/>
+  	<property name="name" value="Susanta"/>
+  	<property name="desg" value="developer"/>
+  </bean>
+  <context:annotation-config></context:annotation-config>
+ </beans>
